@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #DC2626;
+  --color-primary-dark: #B91C1C;
+  --color-primary-light: #FCA5A5;
+  --color-dark: #0A0A0A;
+  --color-dark-card: #141414;
+  --color-dark-surface: #1A1A1A;
+  --color-dark-border: #2A2A2A;
+  --color-dark-muted: #737373;
+  --color-accent: #FFFFFF;
+
+  --color-light: #FFFFFF;
+  --color-light-surface: #F5F5F5;
+  --color-light-border: #E5E5E5;
+  --color-light-muted: #737373;
+
+  --font-heading: "Oswald", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-dark);
+    color: var(--color-accent);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.25s ease-out;
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal-up {
+  transform: translateY(20px);
+}
+
+.reveal-scale {
+  transform: scale(0.96);
+}
+
+.reveal-blur {
+  filter: blur(8px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- Section gradient dividers ---------- */
+.section-gradient {
+  position: relative;
+  pointer-events: none;
+}
+
+.section-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(220, 38, 38, 0.1),
+    transparent 65%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-up,
+  .reveal-scale,
+  .reveal-blur {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
