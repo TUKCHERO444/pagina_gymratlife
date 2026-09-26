@@ -2,44 +2,41 @@ import Reveal from "./Reveal"
 
 const planes = [
   {
-    name: "Básico",
-    price: "$29",
-    period: "/mes",
-    description: "Perfecto para comenzar tu journey",
+    name: "Diario",
+    price: "S/ 8",
+    period: "/día",
+    description: "Entrena un día y vive la experiencia GymRat",
     features: [
-      "Acceso al gimnasio completo",
-      "Horario:lunes a viernes",
-      "1 clase grupal por semana",
-      "App de seguimiento",
+      "Acceso completo por un día",
+      "Todas las zonas de entrenamiento",
+      "Horario: lunes a sábado",
+      "Coaches en sala para tu seguimiento",
     ],
     popular: false,
   },
   {
-    name: "Pro",
-    price: "$49",
+    name: "Mensual",
+    price: "S/ 80",
     period: "/mes",
-    description: "Para quienes van en serio",
+    description: "Para quienes entrenan en serio cada semana",
     features: [
-      "Acceso ilimitado 24/7",
-      "Todas las clases grupales",
-      "1 sesion con coach personal/mes",
-      "Plan nutricional basico",
-      "App + tracking avanzado",
+      "Acceso ilimitado de lunes a sábado",
+      "Todas las zonas del gimnasio",
+      "Horarios amplios de lunes a sábado",
+      "Seguimiento personalizado de los coaches",
     ],
     popular: true,
   },
   {
-    name: "Elite",
-    price: "$79",
+    name: "Promoción Alumnos Nuevos",
+    price: "S/ 60",
     period: "/mes",
-    description: "La experiencia completa GymRat",
+    description: "Precio especial solo para nuevos integrantes",
     features: [
-      "Todo lo del plan Pro",
-      "Coaching personal ilimitado",
-      "Plan nutricional personalizado",
-      "Acceso a zona VIP",
-      "Suplementos incluidos",
-      "1 invitado gratis por semana",
+      "Acceso ilimitado de lunes a sábado",
+      "Todo lo del plan mensual",
+      "Horario de lunes a sábado",
+      "Seguimiento de los coaches desde el día 1",
     ],
     popular: false,
   },
@@ -115,7 +112,9 @@ export default function Planes() {
               </ul>
 
               <a
-                href="#areas"
+                href="https://wa.me/51981367600"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`block w-full py-3.5 rounded-xl font-semibold text-center transition-all duration-200 ${
                   plan.popular
                     ? "bg-primary hover:bg-primary-dark text-white"

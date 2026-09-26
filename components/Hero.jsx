@@ -1,5 +1,6 @@
 import MediaCarousel from "./MediaCarousel"
 import Reveal from "./Reveal"
+import { getYearsOfHistory } from "@/lib/fechas"
 
 export default function Hero() {
   return (
@@ -60,9 +61,9 @@ export default function Hero() {
             {/* Stats */}
             <div className="flex gap-8 pt-4">
               {[
-                { value: "15K+", label: "Miembros" },
-                { value: "50+", label: "Clases/semana" },
-                { value: "8", label: "Anos" },
+                { value: "1000+", label: "Clientes" },
+                { value: "6", label: "Dias/semana de atencion" },
+                { value: `${getYearsOfHistory()}+`, label: "Anos de historia" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="font-heading text-2xl font-bold text-white">

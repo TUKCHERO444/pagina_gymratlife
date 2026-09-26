@@ -1,0 +1,9 @@
+# Netlify deployment config - GymRatLife Chiclayo
+# Build publishes Next.js static export to /out
+
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"

@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 
 const slides = [
-  { type: "image", src: "/hero/slide-1.jpg", alt: "GymRatLife entrenamiento" },
-  { type: "image", src: "/hero/slide-2.jpg", alt: "GymRatLife comunidad" },
-  { type: "image", src: "/hero/slide-3.jpg", alt: "GymRatLife resultados" },
-  { type: "video", src: "/hero/slide-4.mp4", alt: "GymRatLife en accion" },
+  { type: "video", src: "/imgs/espalda2.mp4", alt: "GymRatLife entrenamiento de espalda" },
+  { type: "video", src: "/imgs/sesionpierna.mp4", alt: "GymRatLife sesion de pierna" },
+  { type: "video", src: "/imgs/triceps2.mp4", alt: "GymRatLife entrenamiento de triceps" },
+  { type: "video", src: "/imgs/femoral.mp4", alt: "GymRatLife entrenamiento de femoral" },
 ]
 
 const INTERVAL = 5000
@@ -34,6 +34,34 @@ function SlidePlaceholder({ index }) {
         </p>
       </div>
     </div>
+  )
+}
+
+function VideoSlide({ src, alt, isActive }) {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    if (isActive) {
+      video.currentTime = 0
+      video.play().catch(() => {})
+    } else {
+      video.pause()
+    }
+  }, [isActive])
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      className="w-full h-full object-cover"
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={alt}
+    />
   )
 }
 
@@ -81,15 +109,7 @@ export default function MediaCarousel() {
             aria-hidden={!isActive}
           >
             {slide.type === "video" ? (
-              <video
-                src={slide.src}
-                className="w-full h-full object-cover"
-                muted
-                loop
-                playsInline
-                autoPlay={isActive}
-                aria-label={slide.alt}
-              />
+              <VideoSlide src={slide.src} alt={slide.alt} isActive={isActive} />
             ) : isLoaded !== false ? (
               <img
                 src={slide.src}

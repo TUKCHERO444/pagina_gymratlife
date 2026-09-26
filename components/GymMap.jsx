@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 
-const GYM_POSITION = [-33.4489, -70.6693]
+const GYM_POSITION = [-6.777421600472736, -79.8551391134683]
 
 const customIcon = L.icon({
   iconUrl:
@@ -19,7 +19,7 @@ export default function GymMap() {
   return (
     <MapContainer
       center={GYM_POSITION}
-      zoom={15}
+      zoom={17}
       scrollWheelZoom={false}
       style={{ height: "100%", width: "100%" }}
     >
@@ -32,7 +32,7 @@ export default function GymMap() {
           <div className="text-sm">
             <strong>GymRatLife</strong>
             <br />
-            Av. Principal 1234, Santiago, Chile
+            Av. Cajamarca Mz E Lote 22
           </div>
         </Popup>
       </Marker>

@@ -8,22 +8,55 @@ const areas = [
     num: "01",
     title: "Sala de Musculacion",
     desc: "Pesas libres, maquinas de fuerza y racks para que desarrolles cada grupo muscular a tu ritmo.",
-    media: { type: "image", src: "/areas/sala-musculacion.jpg", alt: "Sala de musculacion" },
+    media: {
+      type: "video",
+      src: "/imgs/triceps2.mp4",
+      modalSrc: "/imgs/femoral2.mp4",
+      alt: "Entrenamiento de triceps en la sala de musculacion",
+    },
     tags: ["Pesas libres", "Maquinas", "Racks"],
+    details: [
+      { label: "Pesas libres", text: "barras, mancuernas y discos de todo peso" },
+      { label: "Maquinas de fuerza", text: "prensa, poleas y maquinas guiadas" },
+      { label: "Racks y jaulas", text: "para sentadillas y press seguro" },
+      { label: "Zona de halterofilia", text: "plataformas con barra olimpica" },
+    ],
   },
   {
     num: "02",
     title: "Zona de Musculacion",
     desc: "Espacio amplio con barras, mancuernas y accesorios para tus entrenamientos de hipertrofia.",
-    media: { type: "image", src: "/areas/zona-musculacion.jpg", alt: "Zona de musculacion" },
+    media: {
+      type: "video",
+      src: "/imgs/espalda1.mp4",
+      modalSrc: "/imgs/espalda2.mp4",
+      alt: "Entrenamiento de espalda en la zona de musculacion",
+    },
     tags: ["Barras", "Mancuernas", "Hipertrofia"],
+    details: [
+      { label: "Barras olimpicas", text: "rectas, zetas y EZ" },
+      { label: "Mancuernas", text: "set completo hasta 50 kg" },
+      { label: "Bancos y soportes", text: "banca plana, inclinada y declinada" },
+      { label: "Hipertrofia", text: "area dedicada al volumen muscular" },
+    ],
   },
   {
     num: "03",
     title: "Zona de Cardio",
     desc: "Cintas, elipticas, bicicletas y remo para mejorar tu condicion fisica y quemar calorias.",
-    media: { type: "video", src: "/areas/zona-cardio.mp4", alt: "Zona de cardio" },
+    media: {
+      type: "video",
+      src: "/imgs/cardio1.mp4",
+      modalSrc: "/imgs/cardio2.mp4",
+      alt: "Zona de cardio",
+    },
     tags: ["Cintas", "Elipticas", "Remo"],
+    details: [
+      { label: "Cintas", text: "ultima generacion con inclinacion" },
+      { label: "Elipticas", text: "movimiento natural sin impacto" },
+      { label: "Bicicletas", text: "verticales y de spinning" },
+      { label: "Remo", text: "cardio y trabajo de espalda" },
+    ],
   },
 ]
 
@@ -31,9 +64,10 @@ function Media({ area, large = false }) {
   const [invalid, setInvalid] = useState(false)
 
   if (area.media.type === "video") {
+    const src = large && area.media.modalSrc ? area.media.modalSrc : area.media.src
     return (
       <video
-        src={area.media.src}
+        src={src}
         className={
           large
             ? "w-full h-full object-contain"
@@ -41,8 +75,10 @@ function Media({ area, large = false }) {
         }
         muted
         loop
-        autoPlay={large}
         playsInline
+        autoPlay
+        preload={large ? "auto" : "metadata"}
+        controls={large}
         aria-label={area.media.alt}
         onError={() => setInvalid(true)}
       />
@@ -154,15 +190,41 @@ function Modal({ area, onClose }) {
           </button>
         </div>
 
-        <div className="relative flex-1 bg-black flex items-center justify-center min-h-0">
+        <div className="relative h-[50vh] sm:h-[55vh] shrink-0 bg-black flex items-center justify-center">
           <div className="w-full h-full">
             <Media area={area} large />
           </div>
         </div>
 
-        <div className="px-5 py-4 border-t border-dark-border">
+        <div className="px-5 py-4 border-t border-dark-border overflow-y-auto flex-1 min-h-0">
           <p className="text-gray-400 text-sm leading-relaxed">{area.desc}</p>
-          <div className="flex flex-wrap gap-2 mt-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+            {area.details.map((detail) => (
+              <div
+                key={detail.label}
+                className="rounded-xl bg-dark-surface border border-dark-border p-4"
+              >
+                <p className="flex items-center gap-2 text-white font-semibold text-sm">
+                  <svg
+                    className="w-4 h-4 text-primary shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {detail.label}
+                </p>
+                <p className="text-gray-500 text-xs mt-1">{detail.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2 mt-4">
             {area.tags.map((tag) => (
               <span
                 key={tag}

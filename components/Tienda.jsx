@@ -2,52 +2,37 @@ import Reveal from "./Reveal"
 
 const productos = [
   {
-    nombre: "Proteina Whey 2kg",
-    precio: "$45.000",
+    nombre: "Proteína",
+    precio: "S/ 175",
     categoria: "Suplementos",
-    descripcion: "Proteina de suero concentrada sabor chocolate",
-    imagen: "/tienda/proteina-whey.jpg",
-    alt: "Proteina en polvo mezclandose en un shaker",
+    descripcion: "Proteína de suero para tu recuperación y ganancia muscular",
+    imagen: "/imgs/proteina.jpeg",
+    alt: "Proteína en polvo",
   },
   {
-    nombre: "Camiseta GymRat",
-    precio: "$35.000",
-    categoria: "Merchandise",
-    descripcion: "Poliester tecnico, colores negro y rojo",
-    imagen: "/tienda/camiseta.jpg",
-    alt: "Camisetas negras y blancas dobladas",
-  },
-  {
-    nombre: "Guantes de Entrenamiento",
-    precio: "$28.000",
-    categoria: "Accesorios",
-    descripcion: "Cuero sintetico, agarre reforzado",
-    imagen: "/tienda/guantes.jpg",
-    alt: "Guantes de entrenamiento",
-  },
-  {
-    nombre: "Shaker GymRat 700ml",
-    precio: "$18.000",
-    categoria: "Accesorios",
-    descripcion: "BPA free, con compartimento para pastillas",
-    imagen: "/tienda/shaker.jpg",
-    alt: "Botonella de proteina sobre una maquina del gimnasio",
-  },
-  {
-    nombre: "Creatina Monohidratada",
-    precio: "$32.000",
+    nombre: "Creatina",
+    precio: "S/ 160",
     categoria: "Suplementos",
-    descripcion: "500g, pureza farmaceutica",
-    imagen: "/tienda/creatina.jpg",
-    alt: "Creatina monohidratada en su envase",
+    descripcion: "Creatina monohidratada de alta pureza para más fuerza",
+    imagen: "/imgs/creatina.jpeg",
+    alt: "Creatina monohidratada",
   },
   {
-    nombre: "Short Deportivo",
-    precio: "$40.000",
-    categoria: "Merchandise",
-    descripcion: "Tela dry-fit, bolsillos laterales",
-    imagen: "/tienda/short-deportivo.jpg",
-    alt: "Deportista con short deportivo",
+    nombre: "Pre Entreno",
+    precio: "S/ 170",
+    categoria: "Suplementos",
+    descripcion: "Energía, foco y rendimiento para tus entrenamientos",
+    imagen: "/imgs/preentreno.jpeg",
+    alt: "Pre entreno en polvo",
+  },
+  {
+    nombre: "Fármacos",
+    precio: "desde S/ 145",
+    categoria: "Farmacología deportiva",
+    descripcion: "Farmacología deportiva de uso especializado",
+    imagen: "/imgs/farmacos.jpeg",
+    alt: "Fármacos deportivos",
+    centered: true,
   },
 ]
 
@@ -63,14 +48,17 @@ export default function Tienda() {
             EQUIPO <span className="text-primary">GYMRAT</span>
           </h2>
           <p className="text-light-muted max-w-xl mx-auto">
-            Suplementos, accesorios y merchandise oficial. Despacho a todo el
-            pais.
+            Variedades de Suplementos y Farmacología deportiva
           </p>
         </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {productos.map((producto, i) => (
-            <Reveal key={producto.nombre} delay={(i % 3) * 90}>
+            <Reveal
+              key={producto.nombre}
+              delay={(i % 3) * 90}
+              className={producto.centered ? "lg:col-start-2" : ""}
+            >
             <div
               className="group bg-white rounded-2xl border border-light-border overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all duration-300"
             >
@@ -99,9 +87,16 @@ export default function Tienda() {
                   <span className="font-heading text-2xl font-bold text-dark">
                     {producto.precio}
                   </span>
-                  <button className="px-4 py-2 bg-dark hover:bg-primary hover:text-white text-gray-300 text-sm font-medium rounded-lg border border-dark hover:border-primary transition-all duration-200">
-                    Agregar
-                  </button>
+                  <a
+                  href={`https://wa.me/51981367600?text=${encodeURIComponent(
+                    `Hola, quiero agregar el producto: ${producto.nombre}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-dark hover:bg-primary hover:text-white text-gray-300 text-sm font-medium rounded-lg border border-dark hover:border-primary transition-all duration-200 inline-block"
+                >
+                  Agregar
+                </a>
                 </div>
               </div>
               </div>
