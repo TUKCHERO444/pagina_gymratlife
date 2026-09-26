@@ -9,7 +9,6 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
-      images: [{ url: `${site.url}${site.logo}` }],
     },
   ]
 }
