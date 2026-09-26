@@ -10,7 +10,7 @@ const horarios = [
   },
   {
     dias: "Sabados",
-    turno1Apertura: "7:15 AM",
+    turno1Apertura: "7:00 AM",
     turno1Cierre: "5:00 PM",
     turno2Apertura: "-",
     turno2Cierre: "-",
