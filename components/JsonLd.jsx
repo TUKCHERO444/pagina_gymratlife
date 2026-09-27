@@ -51,7 +51,7 @@ function webSite() {
     "@type": "WebSite",
     "@id": `${site.url}/#website`,
     url: site.url,
-    name: site.legalName,
+    name: site.name,
     description: site.description,
     inLanguage: "es-PE",
     publisher: { "@id": `${site.url}/#gym` },

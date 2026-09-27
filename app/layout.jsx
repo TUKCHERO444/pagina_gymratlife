@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "es_PE",
     url: `${site.url}/`,
-    siteName: site.legalName,
+    siteName: site.name,
     title: `${site.name} | Gimnasio en ${site.address.locality}`,
     description: site.description,
     images: [
@@ -54,6 +54,20 @@ export const metadata = {
     },
   },
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: `${site.url}/icon.png`, sizes: "32x32", type: "image/png" },
+      { url: `${site.url}/icon.png`, sizes: "16x16", type: "image/png" },
+      { url: `${site.url}/icon.png`, sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: `${site.url}/icon.png`,
+    apple: `${site.url}/icon.png`,
+    other: [
+      { rel: "icon", type: "image/png", sizes: "32x32", url: `${site.url}/icon.png` },
+      { rel: "icon", type: "image/png", sizes: "16x16", url: `${site.url}/icon.png` },
+      { rel: "mask-icon", color: "#DC2626", url: `${site.url}/favicon.svg` },
+    ],
+  },
   other: {
     "geo.region": "PE-LAM",
     "geo.placename": site.address.locality,
